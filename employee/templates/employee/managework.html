@@ -1,0 +1,160 @@
+{% extends 'employee/base.html' %}
+{% load crispy_forms_tags %}
+{% block contents %}
+{% load cart %}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Manage Delivery</h4>
+        
+            {% for message in messages %}
+                <div class="container-fluid p-0">
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="True">&times;</span>
+                        </button>
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+            <form method="POST" class="form-horizontal">
+                {% csrf_token%}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Select Invoice:</label>
+                    <select id="invno" name="invno" size="1" class="form-control" required>
+                     
+                        <option value="">--Select InvoiceNo--</option>
+                        {% for item in InvoiceNo %}    
+                        <option value="{{item.invno}}"
+                            {% if SelectedInvoiceNo in item.invno %}
+                            Selected 
+                            {% endif %}>    
+                            {{item.invno}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>  
+                
+                <!-- <div class="form-group">
+                    <label for="exampleInputEmail1">Employee Name:</label>
+                    <select id="EmpId" name="EmpId" size="1" class="form-control" required>
+                     
+                        <option value="">--Select Employee--</option>
+                        {% for item in EmployeeData %}    
+                        <option value="{{item.id}}">
+                             
+                            {{item.name}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>   -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div id="cdata">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Qty*Price</th>
+                        <th scope="col">Image</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in OrderData %}
+                      <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.currentdate|date:"d-m-Y"}}</td>
+                        <td>{{item.productid.title}}</td>
+                        <td>{{item.productid.description}}</td>
+                        <td>{{item.qty}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.qty|TotalCost:item.price}} </td>
+                        <td><img src='{{item.productid.ProductImageUrl}}' width="100px" height="100px"/></td>
+                       
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+           <h1> Delivery Details </h1>
+            <div id="pdata">
+              
+                    <table class="table">
+                        <thead>
+                        <tr>
+                        
+                            <th scope="col">PaymentMode</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Landmark</th>
+                            <th scope="col">Contact</th>
+                        
+                        
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in CustomerPersonal %}
+                        <tr>
+                            <td>{{item.pmode}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.landmark}}</td>
+                            <td>{{item.contact}}</td>
+                        
+                        
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                             
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(
+$("#invno").change(function () {
+    var inv = $(this).val();  
+    $.ajax({                       
+    url: "{% url 'employee:load_data' %}",       
+    data: {
+        'invno': inv      
+    },
+    success: function (data) {   
+        $("#cdata").html(data);  
+    }
+    });  
+
+})
+);
+
+$(document).ready(
+$("#invno").change(function () {
+    var inv = $(this).val();  
+    $.ajax({                       
+    url: "{% url 'employee:loadcustomerdata' %}",       
+    data: {
+        'invno': inv      
+    },
+    success: function (data) {   
+        $("#pdata").html(data);  
+    }
+    });  
+
+})
+);
+</script> 
+<script>
+    const inputfield = document.getElementsByTagName('input')
+    for(let i in inputfield)
+    {
+          inputfield[i].className += 'form-control'
+    }
+</script>
+{% endblock contents %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">

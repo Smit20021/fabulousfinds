@@ -1,0 +1,30 @@
+<div id="pdata">
+ 
+    <table class="table">
+        <thead>
+          <tr>
+         
+            <th scope="col">PaymentMode</th>
+            <th scope="col">Name</th>
+            <th scope="col">Landmark</th>
+            <th scope="col">Contact</th>
+         
+           
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in personallist %}
+          <tr>
+            <td>{{item.pmode}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.landmark}}</td>
+            <td>{{item.contact}}</td>
+         
+          
+           
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,93 @@
+
+<footer class="w3l-footer-29-main">
+    <div class="footer-29 py-5">
+        <div class="container py-lg-4">
+            <h2 style="color:red;">Special Offer @ All Branded gifts are Flat 50% Discount</h2>
+            <div class="row footer-top-29 mt-md-5">
+               <div class="col-lg-3 col-md-4 footer-list-29 footer-3 pe-lg-5">
+                    <h6 class="footer-title-29">Useful Links</h6>
+                    <div class="footer-listw3-grids">
+                        <ul class="footer-listw3">
+                            <li><a href="{% url 'customers:home' %}">Home</a></li>
+                            <li><a href="{% url 'customers:aboutus' %}">About</a></li>
+                          
+                            <li><a href="{% url 'customers:contactus' %}">Contact</a></li>
+                          
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 footer-list-29 footer-1 ps-lg-5 mt-lg-0 mt-md-5 mt-4">
+                    <h6 class="footer-title-29">Connect/Call</h6>
+                    <div class="footer-listw3-grids">
+                        <ul class="footer-listw3">
+                          
+                              
+                                <li><a href="tel:+(91) 1111 111">+(91) 1111 111 11</a></li>
+                                <li><a href="mailto:xyz@gmail.com" class="mail">xyz@gmail.com</a></li>
+    
+                           
+                       
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-4 footer-list-29 footer-3 mt-lg-0 mt-md-5 mt-4 pe-lg-5">
+                    <h6 class="footer-title-29">Address</h6>
+                    <div class="footer-listw3-grids">
+                        <ul class="footer-listw3">
+                            <li>Waghodia Road</li>
+                            <li>XYZ Street</li>
+                            <li>Vadodara</li>
+                          
+
+                        </ul>
+
+                    </div>
+                </div>
+
+               
+            </div>
+            <div class="row bottom-copies">
+                <p class="copy-footer-29 col-lg-8">©  {% now "Y" %}. fabulousfinds. All rights reserved | Designed by <a href="#" target="_blank">Fabuolous Finds</a></p>
+                <div class="col-lg-4 main-social-right mt-lg-0 mt-4">
+                    <div class="main-social-footer-29">
+                        <a href="#facebook" class="facebook"><span class="fab fa-facebook-f"></span></a>
+                        <a href="#twitter" class="twitter"><span class="fab fa-twitter"></span></a>
+                        <a href="#instagram" class="instagram"><span class="fab fa-instagram"></span></a>
+                        <a href="#linkd" class="linkd"><span class="fab fa-linkedin-in"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-angle-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+    </script>
+    <!-- //move top -->
+</footer>

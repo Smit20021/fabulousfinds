@@ -1,0 +1,4 @@
+<option value="" style="color:black;">---Select Area---</option>
+{% for areas in arealist %}
+	<option value="{{ areas.pk }}" style="color:black;">{{ areas.areaName }}</option>
+{% endfor %}

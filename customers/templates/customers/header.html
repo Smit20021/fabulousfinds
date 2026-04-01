@@ -1,0 +1,85 @@
+<header id="site-header" class="fixed-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+            <h1><a class="navbar-brand pe-xl-5 pe-lg-4" href="{% url 'customers:home' %}">
+                    <span class="w3yellow">Fabulous </span>Finds
+                </a></h1>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'customers:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'customers:aboutus' %}">About</a>
+                    </li>
+                 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'customers:contactus' %}">Contact</a>
+                    </li>
+                    {% if request.session.CName is not None %} 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'customers:orderdetails' %}">OrderHistory</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <!--/search-right-->
+
+            </div>
+            <ul class="header-search me-lg-4 d-flex">
+                {% if request.session.CName is not None %} 
+               
+                <!-- <li class="get-btn me-sm-1">
+                    <a href="{% url 'customers:orderdetails' %}" class="btn btn-primary" title="search"><i class="fas fa-user me-lg-2"></i> <span class="btn-texe-inf">OrderHistory</span></a>
+                </li> -->
+                <li class="get-btn me-2">
+                    <span class="btn-texe-inf">Welcome, {{request.session.CName }}</span>
+                    <a href="{% url 'customers:showcarts' %}" class="btn btn-danger">
+                        Cart(<span class="badge text-bg-secondary">{% if request.session.CartItems is None%} 0 {% else %}{{request.session.CartItems}} {% endif %}</span>)
+                    </a>
+                </li>
+                <li class="get-btn me-2"><a class="btn btn-style btn-primary" href="{% url  'customers:customerlogout' %}" style="color:black; "><i class="fas fa-lock me-lg-2"></i> <span class="btn-texe-inf">Logout</span></a></li>
+              
+                {% else %}
+                <li class="get-btn me-2">
+                    <a href="{% url 'employee:emplogin' %}" class="btn btn-style btn-primary" title="search"><i class="fas fa-user me-lg-2"></i> <span class="btn-texe-inf">Employee</span></a>
+                </li>
+                <li class="get-btn me-2">
+                    <a href="{% url 'giftkeepers:login' %}" class="btn btn-style btn-primary" title="search"><i class="fas fa-user me-lg-2"></i> <span class="btn-texe-inf">GiftKeeper</span></a>
+                </li>
+                <li class="get-btn me-2">
+                    <a href="{% url 'customers:login' %}" class="btn btn-style btn-primary" title="search"><i class="fas fa-user me-lg-2"></i> <span class="btn-texe-inf">Customer</span></a>
+                </li>
+                {% endif %}
+                <!-- <li class="shopvcart galssescart2 cart cart box_1 get-btn">
+                    <form action="#" method="post" class="last">
+                        <input type="hidden" name="cmd" value="_cart">
+                        <input type="hidden" name="display" value="1">
+                        <button class="top_shopv_cart" type="submit" name="submit" value="">
+                            <span class="fas fa-shopping-bag me-lg-2"></span> <span class="btn-texe-inf">Cart</span>
+                        </button>
+                    </form>
+                </li> -->
+            </ul>
+            <!--//search-right-->
+            <!-- toggle switch for light and dark theme -->
+            <div class="mobile-position">
+                <nav class="navigation">
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox">
+                            <div class="mode-container">
+                                <i class="gg-sun"></i>
+                                <i class="gg-moon"></i>
+                            </div>
+                        </label>
+                    </div>
+                </nav>
+            </div>
+            <!-- //toggle switch for light and dark theme -->
+        </nav>
+    </div>
+</header>
