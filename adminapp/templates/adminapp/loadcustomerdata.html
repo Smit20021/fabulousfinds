@@ -1,0 +1,31 @@
+{% load cart %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Qty</th>
+        <th scope="col">Price</th>
+        <th scope="col">Qty*Price</th>
+        <th scope="col">Image</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in orderlist %}
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.currentdate|date:"d-m-Y"}}</td>
+        <td>{{item.productid.title}}</td>
+        <td>{{item.productid.description}}</td>
+        <td>{{item.qty}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.qty|TotalCost:item.price}} </td>
+        <td><img src='{{item.productid.ProductImageUrl}}' width="100px" height="100px"/></td>
+       
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>

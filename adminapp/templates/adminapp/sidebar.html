@@ -1,0 +1,71 @@
+{% load static %}
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item nav-profile">
+        <a href="#" class="nav-link">
+          <div class="profile-image">
+            <img class="img-xs rounded-circle" src="{% static 'admin/images/faces/face8.jpg' %}" alt="profile image">
+            <div class="dot-indicator bg-success"></div>
+          </div>
+          <div class="text-wrapper">
+            <!-- <p class="profile-name">Allen Moreno</p> -->
+            <p class="designation">
+              {% if  request.session.CName %}
+              Welcome, {{request.session.CName}}
+           {% else %}       
+             Welcome, Guest!           
+           {% endif %}
+            </p>
+          </div>
+         
+        </a>
+      </li>
+      <li class="nav-item nav-category">
+        <span class="nav-link">Dashboard</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'adminapp:logout' %}">
+          <span class="menu-title">Logout</span>
+          <i class="icon-screen-desktop menu-icon"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'adminapp:register' %}">
+          <span class="menu-title">Register</span>
+          <i class="icon-screen-desktop menu-icon"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'adminapp:city' %}">
+          <span class="menu-title">Manage City</span>
+          <i class="icon-screen-desktop menu-icon"></i>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'adminapp:area' %}">
+          <span class="menu-title">Manage Area</span>
+          <i class="icon-screen-desktop menu-icon"></i>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'adminapp:employee' %}">
+          <span class="menu-title">Manage Employee</span>
+          <i class="icon-screen-desktop menu-icon"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'adminapp:Task' %}">
+          <span class="menu-title">Manage Delivery</span>
+          <i class="icon-screen-desktop menu-icon"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'adminapp:delivery' %}">
+          <span class="menu-title">Delivery Status</span>
+          <i class="icon-screen-desktop menu-icon"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
